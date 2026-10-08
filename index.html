@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b141d" />
+  <meta name="description" content="Enter the Astral Cloister. A playable, moonlit magical-academy experience." />
+  <link rel="icon" type="image/svg+xml" href="/hogwat-3d/favicon.svg" />
+  <title>Nocturne — The Astral Cloister</title>
+  <script type="module" crossorigin src="/hogwat-3d/assets/index-CKqw2-K9.js"></script>
+  <link rel="modulepreload" crossorigin href="/hogwat-3d/assets/three-engine-C9xaCsgE.js">
+  <link rel="modulepreload" crossorigin href="/hogwat-3d/assets/postprocessing-BEhDdGVE.js">
+  <link rel="stylesheet" crossorigin href="/hogwat-3d/assets/index-DVzDuY6p.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="scene" aria-label="Playable 3D magical academy. WASD to move, drag mouse to look, E to interact." tabindex="0"></canvas>
+    <div class="vignette"></div>
+    <div class="grain"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Nocturne home">
+        <svg class="brand-mark" viewBox="0 0 50 58" fill="none"><path d="M25 2 45 14v27L25 55 5 41V14Z"/><path d="m25 9 13 9v19l-13 9-13-9V18Z"/><path d="M31 18a12 12 0 1 0 0 22c-13 0-13-22 0-22Z"/><path d="m25 2 0 7M5 14l7 4m33-4-7 4M5 41l7-4m33 4-7-4M25 46v9"/></svg>
+        <div><span class="wordmark">NOCTURNE</span><span class="brand-caption">ACADEMY OF THE ARCANE</span></div>
+      </a>
+      <div class="compass" aria-hidden="true"><div class="compass-scale"><span>W</span><i></i><i></i><span class="compass-n">N</span><i></i><i></i><span>E</span></div><span class="compass-needle">◆</span><div class="compass-caption">THE ASTRAL CLOISTER</div></div>
+      <div class="top-actions"><span class="build-label"><i></i> EXPLORATION BUILD <b>01</b></span><button id="sound-toggle" class="icon-button" title="Enable ambient sound" aria-label="Enable ambient sound"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4V5Zm5 4 5 6m0-6-5 6"/></svg></button><button id="settings-toggle" class="icon-button" title="Settings" aria-label="Open settings"><svg viewBox="0 0 24 24"><path d="m9.5 3-.8 2.5-2.4 1L4 6l-2 3.5L4 11v2l-2 1.5L4 18l2.3-.5 2.4 1 .8 2.5h5l.8-2.5 2.4-1L20 18l2-3.5-2-1.5v-2l2-1.5L20 6l-2.3.5-2.4-1-.8-2.5Z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+    </header>
+    <aside class="objective"><span class="small-heading">A WHISPER IN THE DARK</span><div class="objective-row"><span class="objective-diamond">◇</span><div><p id="objective-text">Awaken the celestial orrery</p><span id="objective-distance">Follow the starlight</span></div></div></aside>
+    <div class="chapter-intro" id="chapter-intro"><span>BEYOND THE WAKING WORLD</span><h2>Some secrets only wake at night.</h2><div class="intro-line"></div></div>
+    <div class="interaction hidden" id="interaction"><span class="key">E</span><div><span id="interaction-label">AWAKEN THE ORRERY</span><small id="interaction-description">A forgotten constellation awaits</small></div></div>
+    <div class="spell-flash" id="spell-flash"></div>
+    <div class="toast hidden" id="toast" role="status"></div>
+    <footer class="bottom-bar">
+      <div class="location"><div class="eyebrow"><span class="tiny-star">✦</span> THE NORTH WING <span class="line"></span> NIGHTFALL</div><h1>The Astral Cloister<span>.</span></h1><p>Where the stars remember.</p><div class="character-status"><span class="status-sigil">☽</span><div><span class="character-name">ELARA VESPER <span>YEAR V</span></span><div class="energy-track"><div id="energy-fill"></div></div></div><span class="energy-label">ARCANA</span></div></div>
+      <div class="controls"><div class="control-top"><span class="live-dot"></span> FREE EXPLORATION <button id="photo-toggle" title="Hide interface for photo mode">PHOTO MODE <span class="key">P</span></button></div><div class="control-list"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Move</span><span><kbd>SHIFT</kbd> Run</span><span><kbd>SPACE</kbd> Jump</span><span><svg viewBox="0 0 16 20"><rect x="3" y="1" width="10" height="17" rx="5"/><path d="M8 1v7M3 8h10"/></svg> Drag to look</span><span><svg viewBox="0 0 16 20"><path d="M8 1v18m-3-3 3 3 3-3M5 4l3-3 3 3"/></svg> Zoom</span><span><kbd>Q</kbd> Cast</span></div></div>
+    </footer>
+    <div class="photo-hint hidden" id="photo-hint">PHOTO MODE <span>Drag to orbit · Scroll to zoom · P to return</span></div>
+    <section class="settings hidden" id="settings" aria-label="Experience settings"><div class="settings-heading"><span>THE EXPERIENCE</span><button id="settings-close" class="icon-button" aria-label="Close settings">×</button></div><h2>A little atmosphere.</h2><label>Visual quality<select id="quality"><option value="high">Cinematic</option><option value="medium">Balanced</option><option value="low">Performance</option></select></label><label>Mouse sensitivity<input id="sensitivity" type="range" min="0.3" max="1.8" step="0.1" value="0.8" /></label><label>Ambient sound<button id="ambient-setting" class="text-button">Off</button></label><p>Drag anywhere in the scene to orbit. Press Q to cast a guiding light, or approach the orrery and press E.</p><button id="reset-view" class="primary-button">RETURN TO THE CLOISTER <span>↗</span></button><div class="settings-foot">ESC TO CLOSE <span>NOCTURNE / 0.1</span></div></section>
+    <div class="loading" id="loading"><div class="loading-emblem">☽</div><div class="loading-title">NOCTURNE</div><div class="loading-rule"><span></span></div><p>Opening the gates of the academy</p></div>
+    <div class="error-panel hidden" id="error-panel"><h2>The gates could not open.</h2><p id="error-detail">This experience requires a WebGL 2 capable browser.</p><button onclick="location.reload()">Try again</button></div>
+  </div>
+</body>
+</html>
