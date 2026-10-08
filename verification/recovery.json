@@ -1,0 +1,44 @@
+{
+  "capturedAt": "2026-10-08T22:59:49.264Z",
+  "renderer": "Chromium / software WebGL",
+  "source": "Existing recovered dist; no game source changes",
+  "state": {
+    "ready": true,
+    "awakened": false,
+    "photo": false,
+    "settings": false,
+    "sound": false,
+    "quality": "high",
+    "fps": 1,
+    "casts": 0,
+    "energy": 100,
+    "simulationTime": 0.32330000000074505,
+    "position": [
+      -0.65,
+      0,
+      7.7
+    ],
+    "camera": [
+      0.1543024298828934,
+      1.9190171582162863,
+      13.543034861149751
+    ],
+    "yaw": 0.04,
+    "pitch": 0.1,
+    "distance": 5.9,
+    "grounded": true,
+    "drawCalls": 165,
+    "triangles": 988530
+  },
+  "errors": [],
+  "badResponses": [],
+  "existing_smoke_suite": {
+    "passed": 11,
+    "failed": 0,
+    "command": "TEST_URL=http://127.0.0.1:4173 npm test"
+  },
+  "original_overview_sha256": "f33bdf3917086e8cd153116868657cdf686283540b2783172ea399e916141acf",
+  "source_recovery_commit": "35f53df68646397416245b3fb6fd1c9777466153",
+  "public_playable_url_verified": false,
+  "public_verification_blocker": "Environment network proxy denies api.github.com and thietvedan-dotcom.github.io"
+}
