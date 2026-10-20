@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#faf7f5" />
+  <meta name="description" content="Một lá thư nhỏ, một món quà riêng, và những quả bóng bay mang theo lời nhắn." />
+  <title>Gửi cậu một lá thư ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-background" aria-hidden="true"></div>
+  <div class="soft-grain" aria-hidden="true"></div>
+  <div id="balloons" class="balloon-field" aria-hidden="true"></div>
+
+  <header class="brand-bar">
+    <span class="brand-mark">little<span aria-hidden="true"> ❋ </span>letters</span>
+    <span class="brand-note">a little something, just for you</span>
+  </header>
+
+  <main class="app-main">
+    <section id="introStage" class="screen intro-screen is-visible" aria-label="Màn chào mừng">
+      <div class="intro-ornament" aria-hidden="true">✧ &nbsp; ♡ &nbsp; ✧</div>
+      <p class="eyebrow">A LITTLE SURPRISE</p>
+      <h1>Một chút dịu dàng<br /><em>gửi tới cậu.</em></h1>
+      <p class="intro-description">Có vài điều muốn nói, và một lá thư đang đợi đúng người để mở.</p>
+      <div class="intro-bottom">
+        <span class="loading-indicator" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Những quả bóng mang thư tới...</span>
+      </div>
+      <button type="button" id="skipIntro" class="quiet-link">Bỏ qua phần mở đầu <span aria-hidden="true">↗</span></button>
+    </section>
+
+    <section id="envelopeStage" class="screen envelope-screen" hidden aria-label="Mở phong thư">
+      <div class="floating-small-stars" aria-hidden="true">✧ &nbsp; ✦ &nbsp; ✧</div>
+      <p class="eyebrow">TO SOMEONE SPECIAL</p>
+      <h2>Hình như có thư <em>gửi cậu...</em></h2>
+      <button type="button" id="openEnvelope" class="envelope-button" aria-label="Mở phong thư">
+        <span class="envelope-shadow"></span>
+        <span class="envelope-wrapper">
+          <span class="paper-inside" aria-hidden="true"><span>for you ♡</span></span>
+          <span class="envelope-base"></span>
+          <span class="envelope-fold-left"></span>
+          <span class="envelope-fold-right"></span>
+          <span class="envelope-flap"></span>
+          <span class="wax-seal" aria-hidden="true">♡</span>
+        </span>
+      </button>
+      <p class="subtle-instruction">Chạm vào phong thư để mở nhé <span aria-hidden="true">♡</span></p>
+    </section>
+
+    <section id="nameStage" class="screen name-screen" hidden aria-label="Tìm lá thư của mình">
+      <div class="name-card">
+        <span class="card-heart" aria-hidden="true">♡</span>
+        <p class="eyebrow">A LETTER FOR YOU</p>
+        <h2>Cậu tên là <em>gì nhỉ?</em></h2>
+        <p class="form-hint">Tớ có chuẩn bị những lá thư khác nhau. Hãy cho tớ biết tên cậu nhé.</p>
+        <form id="nameForm" autocomplete="off" novalidate>
+          <label class="visually-hidden" for="recipientName">Nhập tên người nhận</label>
+          <input id="recipientName" name="recipientName" type="text" placeholder="Tên của cậu..." aria-describedby="nameError" maxlength="80" spellcheck="false" required autocomplete="off" />
+          <button type="submit" class="primary-button">Nhận lá thư của mình <span aria-hidden="true">↗</span></button>
+          <p id="nameError" class="form-error" role="status" aria-live="polite"></p>
+        </form>
+        <p class="privacy-hint">Mỗi người sẽ có một bức ảnh và lời nhắn riêng.</p>
+        <button type="button" id="demoButton" class="preview-link">Xem thử thư mẫu</button>
+      </div>
+      <button type="button" id="backToEnvelope" class="quiet-link">← Quay lại phong thư</button>
+    </section>
+
+    <section id="letterStage" class="screen letter-screen" hidden aria-label="Lá thư cá nhân">
+      <div class="letter-topline">
+        <span class="eyebrow">ONLY FOR YOU</span>
+        <button type="button" id="backToName" class="back-link">← Đọc lá thư khác</button>
+      </div>
+      <div class="letter-layout">
+        <div class="portrait-wrap scrapbook-photo">
+          <div class="portrait-mat">
+            <div id="portraitFallback" class="portrait-fallback" aria-hidden="true">
+              <span class="portrait-flower">❋</span>
+              <span>Một khoảnh khắc<br />dành riêng cho cậu</span>
+            </div>
+            <img id="recipientPhoto" alt="Ảnh của người nhận" hidden />
+          </div>
+          <img class="photo-decor photo-tape-a" src="assets/decor/washi-pink.png" alt="" aria-hidden="true" loading="lazy" />
+          <img class="photo-decor photo-tape-b" src="assets/decor/washi-cream.png" alt="" aria-hidden="true" loading="lazy" />
+          <img class="photo-decor photo-bow" src="assets/decor/bow-pink.png" alt="" aria-hidden="true" loading="lazy" />
+          <img class="photo-decor photo-flower" src="assets/decor/flower-ivory.png" alt="" aria-hidden="true" loading="lazy" />
+          <span class="portrait-label" id="portraitLabel">a little memory ♡</span>
+        </div>
+        <article class="letter-paper">
+          <img class="letter-decor letter-star" src="assets/decor/sparkle-cluster.png" alt="" aria-hidden="true" loading="lazy" />
+          <img class="letter-decor letter-heart" src="assets/decor/heart-sticker.png" alt="" aria-hidden="true" loading="lazy" />
+          <img class="letter-decor letter-flower" src="assets/decor/flower-pink.png" alt="" aria-hidden="true" loading="lazy" />
+          <div class="letter-paper-top">a personal note <span aria-hidden="true">❋</span></div>
+          <p class="letter-to" id="letterTo"></p>
+          <h2 id="letterHeading"></h2>
+          <div id="letterParagraphs" class="letter-paragraphs"></div>
+          <p class="letter-signature" id="letterSignature"></p>
+          <span class="letter-end-mark" aria-hidden="true">♡</span>
+        </article>
+      </div>
+      <p class="letter-footer-note">Một chút chân thành, được gói trong những quả bóng bay.</p>
+    </section>
+  </main>
+
+  <!-- One-time paper reveal before a recipient's photo and letter appears. -->
+  <div id="paperReveal" class="paper-reveal" hidden role="status" aria-live="polite" aria-label="Đang mở lá thư">
+    <div class="paper-reveal-backdrop" aria-hidden="true"></div>
+    <div class="paper-reveal-scene" aria-hidden="true">
+      <div class="paper-reveal-ball"><img src="assets/decor/crumpled-paper.png" alt="" /></div>
+      <div class="paper-unfold">
+        <div class="paper-sheet">
+          <div class="paper-crease paper-crease-a"></div>
+          <div class="paper-crease paper-crease-b"></div>
+          <div class="paper-fold paper-fold-left"></div>
+          <div class="paper-fold paper-fold-right"></div>
+          <div class="paper-fold paper-fold-top"></div>
+          <img class="paper-sheet-decor" src="assets/decor/bow-cream.png" alt="" />
+          <span class="paper-sheet-message">Một lá thư dành riêng cho cậu ♡</span>
+        </div>
+      </div>
+      <p class="paper-reveal-caption">Một chút dịu dàng đang được mở ra...</p>
+    </div>
+  </div>
+
+  <footer class="bottom-bar"><span>made with a little love</span><span aria-hidden="true">❋</span><span>just for you</span></footer>
+
+  <script src="recipients.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
